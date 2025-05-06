@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Site Momo<3</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/vendor.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playwrite+HR:wght@100..400&display=swap');
+
+      
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        /* Imagem de fundo com animação */
+        .imagem-cobertura {
+            width: 100vh;
+            height: 100vh; /* Altura total da tela */
+            position: relative;
+            overflow: hidden; /* Para evitar overflow da imagem */
+            animation: moveRight 3s forwards; /* Aplica a animação ao carregar */
+        }
+        .imagem-cobertura img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        /* Animação para mover a imagem para a direita */
+        @keyframes moveRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(15%); /* Ajuste o valor para controlar a posição final */
+            }
+        }
+
+         /* Estilos para o título */
+    .titulo-animado {
+        position: absolute;
+        top: 0,3%;
+        right: 20%; /* Alinha do lado oposto da imagem */
+        color: white;
+        font-size: 1.7em;
+        text-align: left; /* Alinha o texto à direita */
+        opacity: 0; /* Inicialmente invisível */
+        transform: translateX(-50px); /* Desloca para a esquerda */
+        animation: slideIn 3s forwards; /* Aplica a animação de entrada */
+    }
+    .escrito{
+        color: rgb(214, 213, 213);
+        position: relative;
+        left: 10%;
+        top: -10%;
+    }
+    
+
+    /* Animação de entrada */
+    @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px); /* Começa fora da tela */
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-90); /* Termina na posição final */
+        }
+    }
+        .carrossel {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: auto;
+            padding-top: 20px; /* Espaço superior entre a imagem de fundo e o carrossel */
+        }
+
+        .imagens {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .imagem {
+            min-width: 100%;
+            height: auto;
+            position: relative;
+        }
+
+        .imagem img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Texto sobre a imagem */
+        .texto-overlay {
+            font-family: "Merriweather", serif;
+            font-size: 12px;
+            position: absolute;
+            top: 95%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(18, 87, 18, 0.371);
+            border-radius: 20px;
+        }
+
+        /* Botões de navegação */
+        .navegacao {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .botao {
+            background-color: rgba(0, 94, 0, 0.616);
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .botao:hover {
+            opacity: 1;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+        .cronometro h1{
+            color: aliceblue;
+           
+            text-align: center;
+        }
+        .cronometro {
+            display: inline-block; /* Para centralizar os contêineres */
+            margin: 50px;
+        }
+
+    
+
+        .tempo {
+            background-color: #5d7a6291; /* Verde escuro */
+            color: white;
+            padding: 25px;
+            border-radius: 25px;
+            margin: 10px 0; /* Espaçamento entre as linhas */
+            font-size: 1.2em;
+            border: #807f7f 1px solid;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.288), 0 3px 6px rgba(0, 0, 0, 0.1); 
+            letter-spacing: 2px;
+        }
+
+        
+        .tempo:active {
+            transform: translateY(6px);
+            box-shadow: 0 3px 6px rgb(87, 87, 87), 0 1px 3px rgba(64, 64, 64, 0.396);
+            }
+
+        /* <!-- CHECK LIST --> */
+        .container {
+      background-color: #262444;
+      padding: 30px 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      max-width: 420px;
+      width: 90%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #A8D5BA;
+      margin-bottom: 24px;
+      font-weight: 600;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+  background-color: #A8D5BA;
+  color: #1D1B38;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  display: flex;
+  align-items: left;  /* Alinha checkbox e texto verticalmente */
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+    .checklist li:hover {
+      background-color: #94c8a8;
+      transform: translateY(-2px);
+    }
+
+    .checklist input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 12px;
+  accent-color: #1D1B38;
+  vertical-align: middle; /* alinhamento extra opcional */
+}
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 24px 16px;
+      }
+
+      .checklist li {
+        font-size: 14px;
+        padding: 10px 14px;
+      }
+    }
+
+            .btn {
+            background-color: #A8D5BA;
+            color: #2e3b2d;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            }
+            .imagem-coracao img{
+                padding: 20px;
+            }
+            .imagem-saturno{
+                padding: 40px;
+            }
+            .imagem-coracoes {
+                padding-top: 30%;
+                padding-bottom: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            .texto{
+                font-family: "Merriweather", serif;
+                text-align: center;
+            }
+            .cronometro h1{
+                font-family: "Merriweather", serif;
+                text-align: center;
+                font-size: 17px;
+            }
+            .cronometro{
+                background-color: rgba(123, 136, 255, 0.083);
+                border-radius: 5px;
+                padding: 20px;
+            }
+
+           
+            .imagem-boneco{
+                padding-top: 30%;
+                padding-bottom: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            footer {
+  text-align: center;
+  padding: 20px 10px;
+  background-color: #1D1B38;
+  color: #A8D5BA;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid #A8D5BA33;
+  opacity: 0.9;
+}
+
+        
+            </style>
+</head>
+
+<body id="top">
+
+    <!-- hero
+    ================================================== -->
+    <section id="hero" class="s-hero target-section" 
+    data-parallax="scroll" 
+    data-image-src="1730466075239.jpg" 
+    data-natural-width="1000" 
+    data-natural-height="1000" 
+    data-position-y="center">
+
+   
+            <h1 class="titulo-animado">Surpresinha<br>do meu momo</h1>
+            <div class="imagem-coracao">
+                <img src="coraçaounico.png" >
+    </div> <!-- end hero-content -->
+
+    <!-- Adição das novas divs -->
+   
+   
+
+    <div class="hero-scroll">
+        <a href="#about" class="scroll-link smoothscroll">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M12 24l-8-9h6v-15h4v15h6z"/>
+            </svg>
+        </a>
+    </div> <!-- end hero-scroll -->
+
+</section> <!-- end s-hero -->
+
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about" class="s-about target-section">
+
+        <div class="s-about__section s-about__section--profile">
+
+            <div class="right-vert-line"></div>
+
+            <div class="row">
+                <div class="column large-6 medium-8 tab-full">
+
+                    <div class="section-intro" data-num="06" data-aos="fade-up">
+                        <h3 class="subhead">Nosso dia</h3>
+                        <h1 class="display-1">Contando o tempo em frações de segundos ao seu lado (;</h1>
+                    </div>
+
+                    <div class="profile-pic" data-aos="fade-up">
+                        <img src="boneco.png">
+                    </div>
+
+                   <!-- CRONOMETRO INICIO  -->
+
+
+                   <div class="cronometro">
+                    <h1> cronometro</h1>
+                    <div class="tempo" id="dias"></div>
+                    <div class="tempo" id="horas"></div>
+                    <div class="tempo" id="minutos"></div>
+                    <div class="tempo" id="segundos"></div>
+                </div>
+
+
+
+
+                   <!-- CRONOMETRO FIM  -->
+                </div>
+            </div>
+
+            <!-- RECADOS INICIO  -->
+        </div> <!-- end s-about__section--profile -->
+
+        <div class="s-about__section">
+
+            <div class="row">
+                <div class="column">
+                    <h3 data-aos="fade-up">Recadinhos</h3>
+                </div>
+            </div>
+
+            <div class="row block-large-1-2 block-900-full work-positions">
+
+                <div class="column" data-aos="fade-up">
+                    <div class="position">
+                        <div class="position__header">
+                            <h6>
+                                <span class="position__co">1 mês de namoro</span>
+                            </h6>
+                            <div class="position__timeframe">
+                                Novembro 2024 - Dudinha
+                            </div>
+                        </div>
+
+                        <p>
+                                Amor, esses últimos meses têm sido tão especiais para mim. Aconteceu do nada, e do nada você se tornou tudo para mim. Sinto uma felicidade enorme, e você faz parte disso de uma forma única. Desde o primeiro momento em que nos conhecemos, senti algo especial em você. Nossas conversas, nossas coincidências, as coisas em comum… você é realmente diferente de tudo e todos que já conheci.
+                                <br>
+                                <br>
+                                Sei que é só o começo de tudo, mas queria que soubesse o quanto te amo. A cada dia, semana e mês, meu amor por você cresce cada vez mais e mais. Aprendo tanto contigo, sua força, coragem e determinação me inspiram muito. Mesmo eu não estando presente em todas as suas conquistas na vida, fico muito feliz em ver cada uma delas. Tudo isso que você conquistou.
+                                <br>
+                                <br>
+                                De agora em diante, quero não só assistir mas também estar ao seu lado em cada nova conquista. Espero que nossa relação continue leve, em paz e que sejamos parceiras de verdade. Que tenha sinceridade uma com a outra e que, se surgirem problemas possamos conversar e resolver juntas, sempre pensando no que é melhor para nós duas.
+                                <br> 
+                                <br>
+                                Com você eu estou aprendendo o que é amar, como é ser amada, e o que é o amor, da maneira mais bonita, leve e pura. Aprendendo que o amor vai além das palavras e que através das atitudes, desde as mais simples, o amor é muito mais bonito.
+                                Eu te agradeço sempre por tudo, espero conseguir fazer você feliz da maneira que você merece e me faz. Mais uma vez te amo meu momo.
+                            
+                        </p>
+                    </div>
+                </div> <!-- end column -->
+                <div class="column" data-aos="fade-up">
+                    <div class="position">
+                        <div class="position__header">
+                            <h6>
+                                <span class="position__co">1 mês de namoro</span>
+                            </h6>
+                            <div class="position__timeframe">
+                                Novembro 2024 - Paulinha 
+                            </div>
+                        </div>
+
+                        <p>
+                            Um mês... parece pouco tempo, mas, com você, cada dia tem sido cheio de sentimentos que nunca imaginei viver. Eu adoro o jeito como você faz até os momentos mais simples serem especiais, como cada sorriso seu ilumina meu mundo, e como, aos poucos, vamos construindo nossa história. Só quero agradecer por cada detalhe e cada instante ao seu lado. Obrigada por ser essa pessoa tão incrível que me faz querer estar sempre por perto. Que seja o primeiro mês de uma eternidade nossa. 
+                            Te amo ♥ muito muito ♥
+                        </p>
+                    </div>
+                </div> <!-- end column -->
+                <div class="column" data-aos="fade-up">
+                    <div class="position">
+                        <div class="position__header">
+                            <h6>
+                                <span class="position__co">5 meses de namoro</span>
+                            </h6>
+                            <div class="position__timeframe">
+                                Março 2025 - Paulinha
+                            </div>
+                        </div>
+
+                        <p>
+                            Meu amor, hoje completamos 5 meses juntas, e eu só tenho a agradecer por cada momento ao seu lado. Você trouxe mais cor, alegria e amor para minha vida de uma forma que eu nem imaginava ser possível. A cada dia, meu carinho por você só cresce, e eu mal posso esperar por tudo o que ainda vamos viver juntas. Que esse seja apenas o começo de uma história linda e cheia de amor. Te amo Muitooooooooo
+                        </p>
+                    </div>
+                </div> <!-- end column -->
+                <div class="column" data-aos="fade-up">
+                    <div class="position">
+                        <div class="position__header">
+                            <h6>
+                                <span class="position__co">7 meses de namoro</span>
+                            </h6>
+                            <div class="position__timeframe">
+                                Maio 2025 - Dudinha
+                            </div>
+                        </div>
+
+                        <p>
+                            Mo, são sete meses de carinho, de aprendizados, de amor construído no dia a dia.
+                            Sete meses que passaram voando, mas deixaram marcas lindas no meu coração. Muitas boas memórias ao seu lado.
+                            
+                            A cada abraço seu, eu tenho mais certeza de que é aqui que eu quero ficar.
+                            Obrigada por ser presença, por ser apoio, por ser amor.
+                            Que esses 7 sejam só o começo de uma história leve, bonita e tão nossa. Te amo muito muito muito momo.💚
+                        </p>
+                    </div>
+                </div> <!-- end column -->
+
+            </div> <!-- work positions -->
+
+        </div> <!-- end s-about__section -->
+
+    </section> <!-- end s-about -->
+
+<!-- CRONOMETRO FIM  -->
+
+    <!-- services
+    ================================================== -->
+    <section id="services" class="s-services target-section h-dark-bg">
+        
+        <div class="row s-services__content">
+
+            <div class="vert-line"></div>
+
+            <div class="column large-6 s-services__leftcol">
+                <div class="section-intro" data-num="20" data-aos="fade-up">
+                    <h3 class="subhead">CheckList</h3>
+
+                    <h1 class="display-1">
+                    Roles, dates e coisas diferentes
+                    </h1>
+                </div>
+
+                <p class="lead" data-aos="fade-up">
+                <!-- CHECKLIST -->
+    <div class="container">
+       
+        <ul class="checklist">
+          <li><input type="checkbox"> Patinar no gelo</li>
+          <li><input type="checkbox"> Boliche</li>
+          <li><input type="checkbox"> Noite de jogos</li>
+          <li><input type="checkbox"> Piquenique</li>
+          <li><input type="checkbox"> Luau</li>
+          <li><input type="checkbox"> Jantar a luz de velas</li>
+          <li><input type="checkbox"> Fazer uma trilha</li>
+          
+          <li><input type="checkbox"> Noite de massagem</li>
+          <li><input type="checkbox"> Café da manhã em um lugar diferente</li>
+          <li><input type="checkbox"> Assistir jogo no Engenhão</li>
+          <li><input type="checkbox"> Spa day</li>
+          <li><input type="checkbox"> Noite de drinks</li>
+          <li><input type="checkbox"> Desafio desenho sobre a tela</li>
+          <li><input type="checkbox"> Montar quebra-cabeça juntas</li>
+          <li><input type="checkbox"> Ir a um stand up comedy</li>
+          <li><input type="checkbox"> Viagem internacional</li>
+          <li><input type="checkbox"> Ir a uma pista de kart</li>
+          <li><input type="checkbox"> Viajar para um lugar que nenhuma das duas foram</li>
+          <li><input type="checkbox"> Fazer algo pela primeira fez juntas</li>
+          <li><input type="checkbox"> Noite de histórias na cartolina</li>
+          <li><input type="checkbox"> Desafio: comprar um presente para a outra em 30 minutos</li>
+        
+        </ul>
+      </div>
+    </div>
+
+                </p>
+            </div> <!-- end  s-services--leftcol -->
+
+
+    </section> <!-- end s-services -->
+
+
+    <!-- FOTOS DRIVE INICIO  -->
+    <!-- portfolio
+    ================================================== -->
+    <section id="portfolio" class="s-portfolio target-section">
+
+        <div class="row s-portfolio__header">
+            <div class="column large-6 medium-8 tab-full">
+                <div class="section-intro" data-num="fotos" data-aos="fade-up">
+                    <h3 class="subhead">Álbum de</h3>
+                    <h1 class="display-1"> Cada momento é especial ao seu lado. Nada melhor que guardar toda nossa história 
+                       
+                    </h1>
+                </div>
+            </div>
+        </div> <!-- s-porfolio__header -->
+
+        <div class="row s-porfolio__list block-large-1-2 block-tab-full collapse">
+
+            <div class="column" data-aos="fade-up">
+                <div class="folio-item">
+                    <div class="folio-item__thumb">
+                        <a class="folio-item__thumb-link" href="https://drive.google.com/drive/folders/1emhzUoNB-eL6VbMgpUM0xgPxJIxln8aF"  data-size="1050x700">
+                            <img src="ChatGPT Image 6 de mai. de 2025, 01_05_25.png" 
+                                 >
+                        </a>
+                    </div>
+                    <div class="folio-item__info">
+                        <div class="folio-item__cat">06/10/2024</div>
+                        <h4 class="folio-item__title">O início</h4>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1emhzUoNB-eL6VbMgpUM0xgPxJIxln8aF" title="Link" class="folio-item__project-link">Relembre</a>
+                    
+                </div>
+            </div> <!-- end column -->
+            <div class="column" data-aos="fade-up">
+                <div class="folio-item">
+                    <div class="folio-item__thumb">
+                        <a class="folio-item__thumb-link" href="ChatGPT Image 6 de mai. de 2025, 01_05_27.png" title="Building Blocks" data-size="1050x700">
+                            <img src="ChatGPT Image 6 de mai. de 2025, 01_05_27.png" 
+                                >
+                        </a>
+                    </div>
+                    <div class="folio-item__info">
+                        <div class="folio-item__cat">Momentinhos</div>
+                        <h4 class="folio-item__title">Namoro em diante</h4>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1_ew8LqLHBvml6ULFliy2ZLQWgar6eT1b" title="Link" class="folio-item__project-link">Relembre</a>
+                    
+                </div>
+            </div> <!-- end column -->
+            <div class="column" data-aos="fade-up">
+                <div class="folio-item">
+                    <div class="folio-item__thumb">
+                        <a class="folio-item__thumb-link" href="ChatGPT Image 6 de mai. de 2025, 01_29_23.png"  data-size="1050x700">
+                            <img src="ChatGPT Image 6 de mai. de 2025, 01_29_23.png" 
+                                 >
+                        </a>
+                    </div>
+                    <div class="folio-item__info">
+                        <div class="folio-item__cat">Rio e Nikiti</div>
+                        <h4 class="folio-item__title">Roles com momo</h4>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1gihQjil0KuEAZJ7OmoiD_JJEYLA3vC-I" title="Link" class="folio-item__project-link">Relembre</a>
+                    
+                </div>
+            </div> <!-- end column -->
+            <div class="column" data-aos="fade-up">
+                <div class="folio-item">
+                    <div class="folio-item__thumb">
+                        <a class="folio-item__thumb-link" href="ChatGPT Image 6 de mai. de 2025, 01_23_51.png" data-size="1050x700">
+                            <img src="ChatGPT Image 6 de mai. de 2025, 01_23_51.png" 
+                                 >
+                        </a>
+                    </div>
+                    <div class="folio-item__info">
+                        <div class="folio-item__cat">Papa que momo ama</div>
+                        <h4 class="folio-item__title">Jantares</h4>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1hhWlXhGD3IVCaqQ_E-X6-uy56UsR-XeG "title="Link" class="folio-item__project-link">Relembre</a>
+                    
+                </div>
+            </div> <!-- end column -->
+            <div class="column" data-aos="fade-up">
+                <div class="folio-item">
+                    <div class="folio-item__thumb">
+                        <a class="folio-item__thumb-link" href="ChatGPT Image 6 de mai. de 2025, 01_20_48.png"  data-size="1050x700">
+                            <img src="ChatGPT Image 6 de mai. de 2025, 01_20_48.png" 
+                                 >
+                        </a>
+                    </div>
+                    <div class="folio-item__info">
+                        <div class="folio-item__cat">Búzios com os friends</div>
+                        <h4 class="folio-item__title">Viagem</h4>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1fnEJIH6e4DLQVmtzcPVYk8fbnBdluxNe" title=" Link" class="folio-item__project-link">Relembre</a>
+                    
+                </div>
+           
+
+        </div> <!-- folio-list -->
+
+    </section> <!-- end portfolio -->
+
+
+
+    
+<!-- FOTOS FIM   -->
+
+   
+
+    <!-- footer
+    ================================================== -->
+   
+<footer>
+    <p>Simples mas feito de 💚 de dudinha para momo — Guardar um pouco da nossa história. Eu te amo.</p>
+  </footer>
+
+
+
+
+
+
+    <script>
+        // CRONOMETRO
+         // Define a data de início do cronômetro
+         const dataInicio = new Date("2024-10-06T00:00:00");
+
+function atualizarCronometro() {
+    const agora = new Date();
+    const tempoDecorrido = agora - dataInicio;
+
+    // Verifica se a data de início já passou
+    if (tempoDecorrido < 0) {
+        document.getElementById("dias").innerText = "0 dias";
+        document.getElementById("horas").innerText = "0 horas";
+        document.getElementById("minutos").innerText = "0 minutos";
+        document.getElementById("segundos").innerText = "0 segundos";
+        return;
+    }
+
+    const dias = Math.floor(tempoDecorrido / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((tempoDecorrido % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((tempoDecorrido % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((tempoDecorrido % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").innerText = `${dias} dias`;
+    document.getElementById("horas").innerText = `${horas} horas`;
+    document.getElementById("minutos").innerText = `${minutos} minutos`;
+    document.getElementById("segundos").innerText = `${segundos} segundos`;
+}
+
+// Atualiza o cronômetro a cada segundo
+setInterval(atualizarCronometro, 1000);
+
+// Inicia o cronômetro
+atualizarCronometro();
+
+
+        const imagens = document.querySelector('.imagens');
+        const totalImagens = document.querySelectorAll('.imagem').length;
+        let index = 0;
+
+        function mostrarImagem() {
+            const offset = -index * 100;
+            imagens.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            index = (index + 1) % totalImagens;
+            mostrarImagem();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            index = (index - 1 + totalImagens) % totalImagens;
+            mostrarImagem();
+        });
+
+        // Muda a imagem automaticamente a cada 4 segundos
+        setInterval(() => {
+            index = (index + 1) % totalImagens;
+            mostrarImagem();
+        }, 4000);
+    </script>
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
