@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site do momo <3</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playwrite+HR:wght@100..400&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000000;
+            position: relative;
+        }
+
+        /* Imagem de fundo com animação */
+        .imagem-cobertura {
+            width: 100vh;
+            height: 101vh; /* Altura total da tela */
+            position: relative;
+            overflow: hidden; /* Para evitar overflow da imagem */
+            animation: moveRight 3s forwards; /* Aplica a animação ao carregar */
+        }
+        .imagem-cobertura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+        /* Animação para mover a imagem para a direita */
+        @keyframes moveRight {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(10%); /* Ajuste o valor para controlar a posição final */
+            }
+        }
+
+         /* Estilos para o título */
+    .titulo-animado {
+        position: absolute;
+        top: 3%;
+        right: 25%; /* Alinha do lado oposto da imagem */
+        color: white;
+        font-size: 1.7em;
+        text-align: left; /* Alinha o texto à direita */
+        opacity: 0; /* Inicialmente invisível */
+        transform: translateX(-50px); /* Desloca para a esquerda */
+        animation: slideIn 3s forwards; /* Aplica a animação de entrada */
+    }
+    .escrito{
+        color: rgb(214, 213, 213);
+        position: relative;
+        left: 10%;
+        top: -10%;
+    }
+    
+
+    /* Animação de entrada */
+    @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px); /* Começa fora da tela */
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(-90); /* Termina na posição final */
+        }
+    }
+        .carrossel {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: auto;
+            padding-top: 20px; /* Espaço superior entre a imagem de fundo e o carrossel */
+        }
+
+        .imagens {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .imagem {
+            min-width: 100%;
+            height: auto;
+            position: relative;
+        }
+
+        .imagem img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Texto sobre a imagem */
+        .texto-overlay {
+            font-family: "Merriweather", serif;
+            font-size: 14px;
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 40, 0, 0.371);
+            border-radius: 20px;
+        }
+
+        /* Botões de navegação */
+        .navegacao {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .botao {
+            background-color: rgba(0, 94, 0, 0.616);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .botao:hover {
+            opacity: 1;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            main {
+                padding: 10px;
+            }
+        }
+        .cronometro h1{
+            color: aliceblue;
+           
+            text-align: center;
+        }
+        .cronometro {
+            display: inline-block; /* Para centralizar os contêineres */
+            margin: 30px;
+        }
+
+    
+
+        .tempo {
+            background-color: #0b360d; /* Verde escuro */
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 10px 0; /* Espaçamento entre as linhas */
+            font-size: 1.5em;
+            border: #616161 1px solid;
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.112), 0 3px 6px rgba(0, 0, 0, 0.1); 
+            letter-spacing: 1px;
+        }
+
+        
+        .tempo:active {
+            transform: translateY(4px);
+            box-shadow: 0 3px 6px rgb(87, 87, 87), 0 1px 3px rgba(64, 64, 64, 0.396);
+            }
+
+        /* <!-- CHECK LIST --> */
+        .container {
+        font-family: "Merriweather", serif;
+        background-color: #1d2b1a; /* Cor de fundo mais escura */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(255, 255, 255, 0.111);
+         justify-content: center;
+        width: 100%;
+        text-align: center;
+            }
+
+            .texto h1 {
+            font-family: "Merriweather", serif;
+            color: #aadfbf; 
+            font-size: 12px;
+            padding: 7px;
+            text-align: justify;
+            margin-bottom: 20px;
+            }
+
+            h1 {
+            font-family: "Merriweather", serif;    
+            color: #aadfbf; 
+            font-size: 24px;
+            padding: 7px;
+            text-align: center;
+            margin-bottom: 20px;
+            }
+
+            /* .checklist {
+            list-style-type: none;
+            padding: 0;
+            cursor: pointer;
+            } */
+
+            .checklist li {
+            font-family: "Merriweather", serif;
+            background-color: #3a4a36; /* Fundo de cada item */
+            margin: 10px 0;
+            padding: 11px;
+            border-radius: 8px;
+            display: flex;
+            text-align: left;
+            color: #fff;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            }
+
+            input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 10px;
+            }
+
+            .btn {
+            background-color: #A8D5BA;
+            color: #2e3b2d;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+            }
+            .imagem-coracao img{
+                padding: 20px;
+            }
+            .imagem-saturno{
+                padding: 40px;
+            }
+            .imagem-coracoes {
+                padding-top: 30%;
+                padding-bottom: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            .texto{
+                font-family: "Merriweather", serif;
+                text-align: center;
+            }
+            .cronometro h1{
+                font-family: "Merriweather", serif;
+                text-align: center;
+                font-size: 17px;
+            }
+            .cronometro{
+                background-color: rgba(123, 255, 160, 0.083);
+                border-radius: 5px;
+                padding: 20px;
+            }
+
+           
+            .imagem-boneco{
+                padding-top: 30%;
+                padding-bottom: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            
+        
+            </style>
+</head>
+<body>
+     
+    <div class="imagem-coracao">
+        <img src="coraçaounico.png" >
+        
+    </div>
+
+    <div class="imagem-cobertura">
+        <img src="IMG_1651.JPG" >
+        
+    </div>
+
+    <div class="escrito">
+        <h2>Constelação <img src="estrela.png" ></h2>
+    <p>23 de Junho 2024 <br>
+        Botafogo, Rio de Janeiro, Brasil <br>
+        22.9513° S, 43.1841° W
+        </p>
+    </div>
+
+    <div class="imagem-saturno">
+        <img src="saturno.png" >
+    </div>
+
+    <h1 class="titulo-animado">Surpresinha<br>do meu momo</h1>
+
+    <div class="carrossel">
+        <div class="imagens">
+            <div class="imagem">
+                <img src="fotosselfie.jpeg" alt="Imagem 1">
+                <div class="texto-overlay">Te agradeço</div>
+            </div>
+            <div class="imagem">
+                <img src="WhatsApp Image 2024-11-04 at 22.52.26 (1).jpeg" alt="Imagem 2">
+                <div class="texto-overlay">por cada carinho</div>
+            </div>
+            <div class="imagem">
+                <img src="WhatsApp Image 2024-11-04 at 22.52.26.jpeg" alt="Imagem 3">
+                <div class="texto-overlay">cada detalhe</div>
+            </div>
+            <div class="imagem">
+                <img src="WhatsApp Image 2024-11-06 at 00.27.44.jpeg" alt="Imagem 4">
+                <div class="texto-overlay">cada momento</div>
+            </div>
+            <div class="imagem">
+                <img src="WhatsApp Image 2024-11-04 at 22.52.29 (3).jpeg" alt="Imagem 5">
+                <div class="texto-overlay">tudo é muito especial ao seu lado!</div>
+            </div>
+        </div>
+
+        <div class="navegacao">
+            <button class="botao" id="prev">&lt;</button>
+            <button class="botao" id="next">&gt;</button>
+        </div>
+    </div>
+
+    <div class="imagem-coracoes">
+        <img src="coraçoes.png" >
+    </div>
+    
+    <div class="texto">
+        <h1>Amor, esses últimos meses têm sido tão especiais para mim. Aconteceu do nada, e do nada você se tornou tudo para mim. Sinto uma felicidade enorme, e você faz parte disso de uma forma única. Desde o primeiro momento em que nos conhecemos, senti algo especial em você. Nossas conversas, nossas coincidências, as coisas em comum… você é realmente diferente de tudo e todos que já conheci.
+        <br>
+        <br>
+        Sei que é só o começo de tudo, mas queria que soubesse o quanto te amo. A cada dia, semana e mês, meu amor por você cresce cada vez mais e mais. Aprendo tanto contigo, sua força, coragem e determinação me inspiram muito. Mesmo eu não estando presente em todas as suas conquistas na vida, fico muito feliz em ver cada uma delas. Tudo isso que você conquistou.
+        <br>
+        <br>
+        De agora em diante, quero não só assistir mas também estar ao seu lado em cada nova conquista. Espero que nossa relação continue leve, em paz e que sejamos parceiras de verdade. Que tenha sinceridade uma com a outra e que, se surgirem problemas possamos conversar e resolver juntas, sempre pensando no que é melhor para nós duas.
+        <br> 
+        <br>
+        Com você eu estou aprendendo o que é amar, como é ser amada, e o que é o amor, da maneira mais bonita, leve e pura. Aprendendo que o amor vai além das palavras e que através das atitudes, desde as mais simples, o amor é muito mais bonito.
+        Eu te agradeço sempre por tudo, espero conseguir fazer você feliz da maneira que você merece e me faz. Mais uma vez te amo meu momo.</h1>
+    </div>
+
+    <div class="imagem-coracoes">
+        <img src="coraçoes.png" >
+    </div>
+    
+    
+        <div class="cronometro">
+            <h1>Contando o tempo em frações de segundos ao seu lado (;</h1>
+            <div class="tempo" id="dias"></div>
+            <div class="tempo" id="horas"></div>
+            <div class="tempo" id="minutos"></div>
+            <div class="tempo" id="segundos"></div>
+        </div>
+    
+    
+</div>
+
+    <!-- CHECKLIST -->
+    <div class="container">
+        <h1>Checklist dates</h1>
+        <ul class="checklist">
+          <li><input type="checkbox"> Patinar no gelo</li>
+          <li><input type="checkbox"> Boliche</li>
+          <li><input type="checkbox"> Noite de jogos</li>
+          <li><input type="checkbox"> Piquenique</li>
+          <li><input type="checkbox"> Luau</li>
+          <li><input type="checkbox"> Jantar a luz de velas</li>
+          <li><input type="checkbox"> Fazer uma trilha</li>
+          
+          <li><input type="checkbox"> Noite de massagem</li>
+          <li><input type="checkbox"> Café da manhã em um lugar diferente</li>
+          <li><input type="checkbox"> Assistir jogo no Engenhão</li>
+          <li><input type="checkbox"> Spa day</li>
+          <li><input type="checkbox"> Noite de drinks</li>
+          <li><input type="checkbox"> Desafio desenho sobre a tela</li>
+          <li><input type="checkbox"> Montar quebra-cabeça juntas</li>
+          <li><input type="checkbox"> Ir a um stand up comedy</li>
+          <li><input type="checkbox"> Viagem internacional</li>
+          <li><input type="checkbox"> Ir a uma pista de kart</li>
+          <li><input type="checkbox"> Viajar para um lugar que nenhuma das duas foram</li>
+          <li><input type="checkbox"> Fazer algo pela primeira fez juntas</li>
+          <li><input type="checkbox"> Noite de histórias na cartolina</li>
+          <li><input type="checkbox"> Desafio: comprar um presente para a outra em 30 minutos</li>
+        
+        </ul>
+      </div>
+    </div>
+
+    <script>
+        // CRONOMETRO
+         // Define a data de início do cronômetro
+         const dataInicio = new Date("2024-10-06T00:00:00");
+
+function atualizarCronometro() {
+    const agora = new Date();
+    const tempoDecorrido = agora - dataInicio;
+
+    // Verifica se a data de início já passou
+    if (tempoDecorrido < 0) {
+        document.getElementById("dias").innerText = "0 dias";
+        document.getElementById("horas").innerText = "0 horas";
+        document.getElementById("minutos").innerText = "0 minutos";
+        document.getElementById("segundos").innerText = "0 segundos";
+        return;
+    }
+
+    const dias = Math.floor(tempoDecorrido / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((tempoDecorrido % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((tempoDecorrido % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((tempoDecorrido % (1000 * 60)) / 1000);
+
+    document.getElementById("dias").innerText = `${dias} dias`;
+    document.getElementById("horas").innerText = `${horas} horas`;
+    document.getElementById("minutos").innerText = `${minutos} minutos`;
+    document.getElementById("segundos").innerText = `${segundos} segundos`;
+}
+
+// Atualiza o cronômetro a cada segundo
+setInterval(atualizarCronometro, 1000);
+
+// Inicia o cronômetro
+atualizarCronometro();
+
+
+        const imagens = document.querySelector('.imagens');
+        const totalImagens = document.querySelectorAll('.imagem').length;
+        let index = 0;
+
+        function mostrarImagem() {
+            const offset = -index * 100;
+            imagens.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('next').addEventListener('click', () => {
+            index = (index + 1) % totalImagens;
+            mostrarImagem();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            index = (index - 1 + totalImagens) % totalImagens;
+            mostrarImagem();
+        });
+
+        // Muda a imagem automaticamente a cada 4 segundos
+        setInterval(() => {
+            index = (index + 1) % totalImagens;
+            mostrarImagem();
+        }, 4000);
+    </script>
+</body>
+</html>
